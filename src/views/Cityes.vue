@@ -6,7 +6,10 @@
     <p class="timezone">{{ weather.timezone }}</p>
       <div class="weather-info">
         <CurrentCity class="current" v-if="weather.weatherData.hourly" v-bind:weather="weather"/>
-        <HourlyWeather class="hourlyList" v-if="weather.weatherData.hourly" v-bind:hourlyData="weather.weatherData.hourly"/>
+        <HourlyWeather class="hourlyList"
+                       v-if="weather.weatherData.hourly"
+                       v-bind:hourlyData="weather.weatherData.hourly"
+                       v-bind:offset="weather.weatherData.offset"/>
       </div>
       <Loader class="loader" v-if="loading" />
   </div>

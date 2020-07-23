@@ -1,9 +1,9 @@
 <template>
   <div class="hourly">
     <ul class="list" v-if="hourlyData.data">
-      <HourlyItem v-for="(item, index) in hourlyData.data.slice(0, 24)"
+      <HourlyItem v-for="item in hourlyData.data.slice(0, 24)"
                   :key="item.id"
-                  v-bind:index="index"
+                  v-bind:offset="offset"
                   v-bind:hourData="item"/>
     </ul>
   </div>
@@ -12,7 +12,7 @@
 <script>
 import HourlyItem from '../components/HourlyItem'
 export default {
-  props: ['hourlyData'],
+  props: ['hourlyData', 'offset'],
   components: {
     HourlyItem
   }

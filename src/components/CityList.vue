@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       cityList: [
-        'reno', 'санкт-петербург'
+
       ]
     }
   },

@@ -2,29 +2,20 @@
   <li class="hour-item">
     <span class="time">{{getHours(hourData.time)}}:00</span>
     <span class="temperature">{{ Math.floor(hourData.temperature) }} &#8451;</span>
-    <img class="icon" v-bind:src="this.iconURL" alt="icon" width="40" height="40">
+    <img class="icon" v-bind:src="getIcon(this.hourData.icon)" alt="icon" width="40" height="40">
   </li>
 </template>
 
 <script>
 export default {
-  props: ['hourData', 'index'],
-  data () {
-    return {
-      iconURL: `icons/${this.hourData.icon}.png`
-    }
-  },
+  props: ['hourData', 'offset'],
   methods: {
     getHours: function (time) {
-      let hours = new Date().getHours() + this.index
-
-      if (hours >= 24) {
-        hours -= 24
-      }
-      if (hours < 10) {
-        hours = '0' + hours
-      }
+      const hours = new Date(this.hourData.time * 1000).getUTCHours() + this.offset
       return hours
+    },
+    getIcon: function (icon) {
+      return `icons/${icon}.png`
     }
   }
 }
