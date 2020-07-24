@@ -11,7 +11,13 @@ export default {
   props: ['hourData', 'offset'],
   methods: {
     getHours: function (time) {
-      const hours = new Date(this.hourData.time * 1000).getUTCHours() + this.offset
+      let hours = new Date(this.hourData.time * 1000).getUTCHours() + this.offset
+      if (hours > 23) {
+        hours = hours - 24
+      }
+      if (hours < 0) {
+        hours = 24 + hours
+      }
       return hours
     },
     getIcon: function (icon) {
